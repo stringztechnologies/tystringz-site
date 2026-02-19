@@ -285,18 +285,55 @@ h2 {
 
 /* Videos */
 .videos {
-  padding: 8rem 0;
-  background: var(--black);
+  position: relative;
+  padding: 10rem 0;
   text-align: center;
+  overflow: hidden;
+}
+.videos .bg {
+  position: absolute;
+  inset: 0;
+  background: url('photos/beach-torches.jpg') center/cover no-repeat;
+  filter: blur(30px) saturate(0.6) brightness(0.25);
+  transform: scale(1.15);
+  z-index: 0;
+}
+.videos::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    var(--black) 0%,
+    rgba(10,10,10,0.4) 20%,
+    rgba(10,10,10,0.4) 80%,
+    var(--black) 100%
+  );
+  z-index: 1;
 }
 .videos h2 {
+  position: relative;
+  z-index: 2;
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.8rem, 4vw, 3rem);
   color: var(--cream);
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   letter-spacing: 0.05em;
 }
+.videos .videos-sub {
+  position: relative;
+  z-index: 2;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.5;
+  margin-bottom: 3rem;
+}
 .videos-grid {
+  position: relative;
+  z-index: 2;
   max-width: 800px;
   margin: 0 auto;
   padding: 0 4vw;
@@ -307,6 +344,7 @@ h2 {
   padding-bottom: 56.25%;
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 80px rgba(196,162,101,0.08);
 }
 .video-embed iframe {
   position: absolute;
@@ -514,7 +552,9 @@ footer .copy {
 
 <!-- Music Videos -->
 <section class="videos" id="videos">
+  <div class="bg"></div>
   <h2>Music Videos</h2>
+  <div class="videos-sub">Official visuals</div>
   <div class="videos-grid">
     <div class="video-embed">
       <iframe src="https://www.youtube.com/embed/videoseries?list=PLhSvzFujEkM96vu-XMoezXzx7fgAS5bVb" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
