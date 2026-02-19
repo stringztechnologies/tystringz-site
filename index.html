@@ -283,6 +283,40 @@ h2 {
   }
 }
 
+/* Videos */
+.videos {
+  padding: 8rem 0;
+  background: var(--black);
+  text-align: center;
+}
+.videos h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--cream);
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
+}
+.videos-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* About */
 .about {
   min-height: 80vh;
@@ -433,6 +467,7 @@ footer .copy {
     <li><a href="#hero" data-nav>Home</a></li>
     <li><a href="#release" data-nav>Latest</a></li>
     <li><a href="#gallery" data-nav>Visuals</a></li>
+    <li><a href="#videos" data-nav>Videos</a></li>
     <li><a href="#about" data-nav>About</a></li>
     <li><a href="#music" data-nav>Music</a></li>
     <li><a href="#press" data-nav>Press</a></li>
@@ -474,6 +509,16 @@ footer .copy {
     <div class="g-img"><img src="photos/sculpture-face-cover.jpg" alt="" loading="lazy"></div>
     <div class="g-img"><img src="photos/red-gold-blazer-hand.jpg" alt="" loading="lazy"></div>
     <div class="g-img"><img src="photos/beach-skales.jpg" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- Music Videos -->
+<section class="videos" id="videos">
+  <h2>Music Videos</h2>
+  <div class="videos-grid">
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLhSvzFujEkM96vu-XMoezXzx7fgAS5bVb" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
+    </div>
   </div>
 </section>
 
