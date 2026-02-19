@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TYSTRINGZ</title>
 <meta name="description" content="TyStringz — Lagos → Austin. Multi-instrumentalist, Grammy Academy member, AI Engineer. Afrobeats, Afropop, Dancehall.">
+<link rel="preload" href="photos/hero-closeup.jpg" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
@@ -718,13 +719,20 @@ gsap.registerPlugin(ScrollTrigger);
 const loader = document.getElementById('loader');
 const loaderName = loader.querySelector('.name');
 
-gsap.timeline()
-  .to(loaderName, { opacity: 1, duration: 1, ease: 'power2.out' })
-  .to(loaderName, { opacity: 0, duration: 0.8, delay: 1.2, ease: 'power2.in' })
-  .to(loader, { opacity: 0, duration: 0.6, ease: 'power2.inOut', onComplete: () => {
-    loader.style.display = 'none';
-    initAnimations();
-  }});
+// Preload hero image, then run intro
+const heroPreload = new Image();
+heroPreload.src = 'photos/hero-closeup.jpg';
+const startIntro = () => {
+  gsap.timeline()
+    .to(loaderName, { opacity: 1, duration: 0.6, ease: 'power2.out' })
+    .to(loaderName, { opacity: 0, duration: 0.5, delay: 0.6, ease: 'power2.in' })
+    .to(loader, { opacity: 0, duration: 0.4, ease: 'power2.inOut', onComplete: () => {
+      loader.style.display = 'none';
+      initAnimations();
+    }});
+};
+if (heroPreload.complete) startIntro();
+else heroPreload.onload = startIntro;
 
 function initAnimations() {
   // Hero Ken Burns
