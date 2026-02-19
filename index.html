@@ -313,15 +313,20 @@ h2 {
 }
 
 @media (max-width: 768px) {
+  .gallery {
+    padding: 4rem 0;
+  }
   .gallery-track {
-    flex-direction: column;
-    align-items: center;
-    overflow-x: visible;
+    flex-direction: row;
+    overflow-x: auto;
     padding: 0 1.5rem;
   }
   .gallery-track .g-img {
-    width: 100%;
-    height: 70vw;
+    flex: 0 0 75vw;
+    height: 85vw;
+  }
+  .gallery-track .g-img:nth-child(n+5) {
+    display: none;
   }
 }
 
@@ -425,9 +430,18 @@ h2 {
   opacity: 0.8;
 }
 @media (max-width: 768px) {
+  .videos {
+    padding: 5rem 0;
+  }
+  .videos-featured {
+    margin-bottom: 2rem;
+  }
   .videos-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+  .videos-grid .video-card:nth-child(n+4) {
+    display: none;
   }
 }
 
