@@ -1,335 +1,623 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TyStringz — Afrobeats Artist</title>
-    <meta name="description" content="TyStringz — Afrobeats artist bridging Lagos and Chicago. Listen to 'Pepper Body' ft. Skales now.">
-    <meta property="og:title" content="TyStringz — Afrobeats Artist">
-    <meta property="og:description" content="Afrobeats · Afropop · Dancehall — Lagos → Chicago">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tystringz.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0a0a;
-            color: #f0f0f0;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        a { color: #d4a017; text-decoration: none; transition: color 0.2s; }
-        a:hover { color: #f0c040; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TYSTRINGZ</title>
+<meta name="description" content="TyStringz — Lagos → Chicago. Afrobeats, Afropop, Dancehall.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* NAV */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(10,10,10,0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(212,160,23,0.1);
-            padding: 0 2rem;
-        }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 60px;
-        }
-        .nav-logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; color: #d4a017; }
-        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-        .nav-links a { color: #aaa; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
-        .nav-links a:hover { color: #d4a017; }
-        .menu-toggle { display: none; background: none; border: none; color: #d4a017; font-size: 1.5rem; cursor: pointer; }
+:root {
+  --black: #0a0a0a;
+  --gold: #c4a265;
+  --amber: #d4923a;
+  --green: #2a3a2a;
+  --orange: #b8603a;
+  --cream: #e8dcc8;
+  --white: #f0ece4;
+}
 
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse at 20% 50%, rgba(212,160,23,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(212,100,23,0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(160,23,212,0.08) 0%, transparent 50%);
-            z-index: 0;
-        }
-        /* Animated grain texture */
-        .hero::after {
-            content: '';
-            position: absolute; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-            z-index: 0;
-        }
-        .hero-content { position: relative; z-index: 1; padding: 2rem; }
-        /* ARTIST PHOTO PLACEHOLDER — Replace this div with an <img> tag when photo is available -->
-        .hero-photo-placeholder {
-            width: 180px; height: 180px;
-            margin: 0 auto 2rem;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #d4a017 0%, #8b5e0f 50%, #d4a017 100%);
-            background-size: 200% 200%;
-            animation: shimmer 3s ease-in-out infinite;
-            border: 3px solid rgba(212,160,23,0.3);
-        }
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 900;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, #f0c040 0%, #d4a017 50%, #f0c040 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-        .hero .tagline {
-            font-size: 1.1rem; font-weight: 300; color: #888;
-            letter-spacing: 3px; text-transform: uppercase;
-        }
-        .hero .cta-row { margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-        .btn-primary { background: #d4a017; color: #0a0a0a; }
-        .btn-primary:hover { background: #f0c040; color: #0a0a0a; transform: translateY(-2px); }
-        .btn-outline { border: 1px solid rgba(212,160,23,0.4); color: #d4a017; }
-        .btn-outline:hover { border-color: #d4a017; background: rgba(212,160,23,0.1); transform: translateY(-2px); }
+html { scroll-behavior: smooth; }
 
-        /* SECTIONS */
-        section { padding: 5rem 2rem; }
-        .container { max-width: 900px; margin: 0 auto; }
-        .section-label {
-            font-size: 0.75rem; font-weight: 600; color: #d4a017;
-            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem;
-        }
-        .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 800; margin-bottom: 1.5rem;
-        }
-        .divider {
-            width: 60px; height: 3px;
-            background: linear-gradient(90deg, #d4a017, transparent);
-            margin-bottom: 2rem;
-        }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
 
-        /* LATEST RELEASE */
-        #latest { background: #0d0d0d; }
-        .release-card {
-            background: rgba(212,160,23,0.05);
-            border: 1px solid rgba(212,160,23,0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-top: 1rem;
-        }
-        .release-meta { color: #888; font-size: 0.85rem; margin-bottom: 1rem; }
-        .release-meta span { color: #d4a017; }
-        .spotify-embed { border-radius: 12px; margin-top: 1rem; }
+/* Custom Cursor */
+.cursor {
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, border-color 0.2s;
+  mix-blend-mode: difference;
+}
+.cursor.hover {
+  width: 40px; height: 40px;
+  border-color: var(--amber);
+}
+@media (hover: none) { .cursor { display: none; } body { cursor: auto; } }
 
-        /* MUSIC */
-        #music { background: #0a0a0a; }
+/* Film Grain Overlay */
+.grain {
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  animation: grainMove 0.5s steps(4) infinite;
+}
+@keyframes grainMove {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-5%,-5%); }
+  50% { transform: translate(5%,2%); }
+  75% { transform: translate(-2%,5%); }
+  100% { transform: translate(0,0); }
+}
 
-        /* ABOUT */
-        #about { background: #0d0d0d; }
-        .about-text { font-size: 1.1rem; color: #ccc; max-width: 700px; line-height: 1.8; }
+/* Loading Screen */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#loader .name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 8vw, 5rem);
+  letter-spacing: 0.3em;
+  color: var(--white);
+  opacity: 0;
+}
 
-        /* PRESS */
-        #press { background: #0a0a0a; }
-        .press-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .press-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-        .press-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: #d4a017; }
-        .press-card p, .press-card li { font-size: 0.9rem; color: #aaa; line-height: 1.7; }
-        .press-card ul { list-style: none; }
-        .press-card ul li::before { content: '→ '; color: #d4a017; }
-        .press-cta {
-            margin-top: 2rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(212,160,23,0.02));
-            border: 1px solid rgba(212,160,23,0.15);
-            border-radius: 12px;
-            text-align: center;
-        }
-        .press-cta h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-        .press-cta p { color: #888; font-size: 0.9rem; margin-bottom: 1rem; }
-        .press-cta a.email { font-size: 1.1rem; font-weight: 600; }
+/* Nav */
+nav {
+  position: fixed;
+  top: 0; right: 0;
+  z-index: 100;
+  padding: 2rem;
+  mix-blend-mode: difference;
+}
+nav .hamburger {
+  width: 28px; height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: none;
+  background: none; border: none;
+}
+nav .hamburger span {
+  display: block;
+  width: 100%; height: 1.5px;
+  background: var(--white);
+  transition: 0.3s;
+}
+.nav-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.95);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.nav-menu.open { opacity: 1; pointer-events: all; }
+.nav-menu ul { list-style: none; text-align: center; }
+.nav-menu li { margin: 1.5rem 0; }
+.nav-menu a {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+.nav-menu a:hover { color: var(--gold); }
 
-        /* FOOTER */
-        footer {
-            padding: 3rem 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-        }
-        .social-links { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem; }
-        .social-links a {
-            width: 44px; height: 44px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s;
-        }
-        .social-links a:hover { border-color: #d4a017; background: rgba(212,160,23,0.1); }
-        .social-links svg { width: 20px; height: 20px; fill: #aaa; transition: fill 0.3s; }
-        .social-links a:hover svg { fill: #d4a017; }
-        .footer-copy { font-size: 0.8rem; color: #555; }
+/* Hero */
+.hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  will-change: transform;
+}
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.5;
+}
+.scroll-indicator span {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.scroll-indicator .line {
+  width: 1px;
+  height: 40px;
+  background: var(--white);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { scaleY: 1; opacity: 0.5; }
+  50% { scaleY: 0.5; opacity: 0.2; }
+}
 
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.open {
-                display: flex; flex-direction: column;
-                position: absolute; top: 60px; left: 0; right: 0;
-                background: rgba(10,10,10,0.95);
-                padding: 1.5rem 2rem;
-                gap: 1rem;
-                border-bottom: 1px solid rgba(212,160,23,0.1);
-            }
-            .menu-toggle { display: block; }
-            section { padding: 3.5rem 1.25rem; }
-        }
-    </style>
+/* Section defaults */
+section {
+  position: relative;
+  overflow: hidden;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  letter-spacing: 0.05em;
+}
+
+/* Latest Release */
+.release {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.release .bg {
+  position: absolute;
+  inset: 0;
+  background: url('photos/beach-torches.jpg') center/cover no-repeat;
+  filter: brightness(0.3) saturate(0.8);
+}
+.release .content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+}
+.release h2 {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  color: var(--cream);
+}
+.release .subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+.release iframe {
+  border-radius: 12px;
+  max-width: 100%;
+}
+
+/* Gallery */
+.gallery {
+  padding: 8rem 0;
+  background: var(--black);
+}
+.gallery-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.6;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.gallery-track {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0 4vw;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+.gallery-track .g-img {
+  flex: 0 0 auto;
+  width: clamp(280px, 35vw, 500px);
+  height: clamp(350px, 45vw, 620px);
+  overflow: hidden;
+  scroll-snap-align: center;
+}
+.gallery-track .g-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 0, 0.25, 1);
+  filter: saturate(0.85);
+}
+.gallery-track .g-img:hover img {
+  transform: scale(1.05);
+  filter: saturate(1);
+}
+
+@media (max-width: 768px) {
+  .gallery-track {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: visible;
+    padding: 0 1.5rem;
+  }
+  .gallery-track .g-img {
+    width: 100%;
+    height: 70vw;
+  }
+}
+
+/* About */
+.about {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.about .bg {
+  position: absolute;
+  inset: 0;
+  background: url('photos/sculpture-standing.jpg') center/cover no-repeat;
+  filter: brightness(0.25) saturate(0.7);
+}
+.about .content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 600px;
+  padding: 2rem;
+}
+.about h2 {
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  line-height: 1.3;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+.about p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(240,236,228,0.6);
+  letter-spacing: 0.02em;
+}
+
+/* Music */
+.music {
+  padding: 6rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--black) 0%, #0f0f0f 100%);
+}
+.music h2 {
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.music .music-sub {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(240,236,228,0.4);
+  margin-bottom: 3rem;
+}
+.music iframe {
+  border-radius: 12px;
+  max-width: 100%;
+}
+
+/* Press */
+.press {
+  padding: 6rem 2rem;
+  background: #080808;
+}
+.press-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.press h2 {
+  color: var(--gold);
+  margin-bottom: 3rem;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+.press-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+@media (max-width: 600px) {
+  .press-grid { grid-template-columns: 1fr; }
+}
+.press-block h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.press-block p, .press-block a {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: rgba(240,236,228,0.5);
+}
+.press-block a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.press-block a:hover { color: var(--amber); }
+
+/* Footer */
+footer {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: var(--black);
+  border-top: 1px solid rgba(196,162,101,0.1);
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.social-icons a {
+  color: rgba(240,236,228,0.4);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.social-icons a:hover { color: var(--gold); }
+footer .copy {
+  font-size: 0.65rem;
+  color: rgba(240,236,228,0.2);
+  letter-spacing: 0.1em;
+}
+</style>
 </head>
 <body>
-    <nav>
-        <div class="nav-inner">
-            <div class="nav-logo">TYSTRINGZ</div>
-            <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
-            <ul class="nav-links">
-                <li><a href="#latest">Latest</a></li>
-                <li><a href="#music">Music</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#press">Press</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <!-- ARTIST PHOTO: Replace .hero-photo-placeholder with <img src="photo.jpg" alt="TyStringz" style="width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 2rem;display:block;"> -->
-            <div class="hero-photo-placeholder"></div>
-            <h1>TyStringz</h1>
-            <p class="tagline">Afrobeats Artist &nbsp;|&nbsp; Lagos → Chicago</p>
-            <div class="cta-row">
-                <a href="https://open.spotify.com/track/2LxlMrlmAceoaWnk4Zlc1t" target="_blank" class="btn btn-primary">Listen to Pepper Body</a>
-                <a href="#press" class="btn btn-outline">Press Kit</a>
-            </div>
-        </div>
-    </section>
+<div class="grain"></div>
+<div class="cursor" id="cursor"></div>
 
-    <section id="latest">
-        <div class="container">
-            <p class="section-label">Latest Release</p>
-            <h2 class="section-title">Pepper Body ft. Skales</h2>
-            <div class="divider"></div>
-            <div class="release-card">
-                <p class="release-meta">Released <span>February 13, 2026</span> &nbsp;·&nbsp; Afrobeats / Dancehall</p>
-                <iframe class="spotify-embed" style="border-radius:12px" src="https://open.spotify.com/embed/track/2LxlMrlmAceoaWnk4Zlc1t?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-        </div>
-    </section>
+<!-- Loading -->
+<div id="loader">
+  <div class="name">TYSTRINGZ</div>
+</div>
 
-    <section id="music">
-        <div class="container">
-            <p class="section-label">Discography</p>
-            <h2 class="section-title">All Music</h2>
-            <div class="divider"></div>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/4tfnQIRNHLgZmdThaIkByc?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-    </section>
+<!-- Nav -->
+<nav>
+  <button class="hamburger" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-menu" id="navMenu">
+  <ul>
+    <li><a href="#hero" data-nav>Home</a></li>
+    <li><a href="#release" data-nav>Latest</a></li>
+    <li><a href="#gallery" data-nav>Visuals</a></li>
+    <li><a href="#about" data-nav>About</a></li>
+    <li><a href="#music" data-nav>Music</a></li>
+    <li><a href="#press" data-nav>Press</a></li>
+  </ul>
+</div>
 
-    <section id="about">
-        <div class="container">
-            <p class="section-label">About</p>
-            <h2 class="section-title">The Story</h2>
-            <div class="divider"></div>
-            <p class="about-text">TyStringz is an Afrobeats artist bridging Lagos and Chicago, blending dancehall energy with Afropop melodies. His latest single "Pepper Body" features Skales, one of Afrobeats' most prolific hitmakers with 23,000+ playlist placements across Spotify.</p>
-        </div>
-    </section>
+<!-- Hero -->
+<section class="hero" id="hero">
+  <img src="photos/hero-closeup.jpg" alt="TyStringz" id="heroImg">
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="line"></div>
+  </div>
+</section>
 
-    <section id="press">
-        <div class="container">
-            <p class="section-label">Press Kit</p>
-            <h2 class="section-title">For Curators & Media</h2>
-            <div class="divider"></div>
-            <div class="press-grid">
-                <div class="press-card">
-                    <h3>Artist One-Sheet</h3>
-                    <ul>
-                        <li>Artist: TyStringz (Oretayo Fatokun)</li>
-                        <li>Genre: Afrobeats, Afropop, Dancehall</li>
-                        <li>Based: Lagos → Chicago</li>
-                        <li>Latest: "Pepper Body" ft. Skales</li>
-                        <li>Release Date: Feb 13, 2026</li>
-                    </ul>
-                </div>
-                <div class="press-card">
-                    <h3>Key Highlights</h3>
-                    <ul>
-                        <li>Feature with Skales (23K+ playlist placements)</li>
-                        <li>Discography: Pepper Body, Dawa, Jara, Hurt</li>
-                        <li>Cross-continental Afrobeats sound</li>
-                        <li>Available on all major platforms</li>
-                    </ul>
-                </div>
-                <div class="press-card">
-                    <h3>Links</h3>
-                    <ul>
-                        <li><a href="https://open.spotify.com/artist/4tfnQIRNHLgZmdThaIkByc" target="_blank">Spotify Artist Profile</a></li>
-                        <li><a href="https://open.spotify.com/track/2LxlMrlmAceoaWnk4Zlc1t" target="_blank">Pepper Body on Spotify</a></li>
-                        <li><a href="https://instagram.com/tystringz" target="_blank">Instagram @tystringz</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="press-cta">
-                <h3>Playlist Submissions & Press Inquiries</h3>
-                <p>For playlist consideration, press features, and booking inquiries</p>
-                <a href="mailto:music@stringztechnologies.com" class="email">music@stringztechnologies.com</a>
-            </div>
-        </div>
-    </section>
+<!-- Latest Release -->
+<section class="release" id="release">
+  <div class="bg"></div>
+  <div class="content">
+    <h2>Pepper Body</h2>
+    <div class="subtitle">ft. Skales</div>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2LxlMrlmAceoaWnk4Zlc1t?utm_source=generator&theme=0" width="400" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+</section>
 
-    <footer>
-        <div class="social-links">
-            <a href="https://open.spotify.com/artist/4tfnQIRNHLgZmdThaIkByc" target="_blank" aria-label="Spotify">
-                <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-            </a>
-            <a href="https://instagram.com/tystringz" target="_blank" aria-label="Instagram">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="https://twitter.com/tystringz" target="_blank" aria-label="X / Twitter">
-                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-        </div>
-        <p class="footer-copy">© 2026 TyStringz. All rights reserved.</p>
-    </footer>
+<!-- Gallery -->
+<section class="gallery" id="gallery">
+  <div class="gallery-label">Visual World</div>
+  <div class="gallery-track">
+    <div class="g-img"><img src="photos/garden-hood.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/beach-night-hands.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/red-gold-blazer-full.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/sculpture-looking-down.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/beach-group-prayer.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/dark-plaid-portrait.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/red-seated-green.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/beach-night-standing.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/sculpture-face-cover.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/red-gold-blazer-hand.jpg" alt="" loading="lazy"></div>
+    <div class="g-img"><img src="photos/beach-skales.jpg" alt="" loading="lazy"></div>
+  </div>
+</section>
 
-    <script>
-        // Close mobile menu on link click
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
-        });
-    </script>
+<!-- About -->
+<section class="about" id="about">
+  <div class="bg"></div>
+  <div class="content">
+    <h2>Lagos → Chicago</h2>
+    <p>Bridging worlds through sound and texture. Afrobeats, soul, and everything that moves between.</p>
+  </div>
+</section>
+
+<!-- Music -->
+<section class="music" id="music">
+  <h2>Music</h2>
+  <div class="music-sub">Stream everywhere</div>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/4tfnQIRNHLgZmdThaIkByc?utm_source=generator&theme=0" width="400" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</section>
+
+<!-- Press -->
+<section class="press" id="press">
+  <div class="press-inner">
+    <h2>Press & Inquiries</h2>
+    <div class="press-grid">
+      <div class="press-block">
+        <h3>Contact</h3>
+        <p><a href="mailto:music@stringztechnologies.com">music@stringztechnologies.com</a></p>
+      </div>
+      <div class="press-block">
+        <h3>Genre</h3>
+        <p>Afrobeats / Afropop / Dancehall</p>
+      </div>
+      <div class="press-block">
+        <h3>Latest Release</h3>
+        <p>Pepper Body ft. Skales — a cross-continental collaboration bridging Nigerian and diaspora sounds.</p>
+      </div>
+      <div class="press-block">
+        <h3>Links</h3>
+        <p>
+          <a href="https://open.spotify.com/artist/4tfnQIRNHLgZmdThaIkByc" target="_blank">Spotify</a><br>
+          <a href="https://instagram.com/tystringz" target="_blank">Instagram</a><br>
+          <a href="https://twitter.com/tystringz" target="_blank">X / Twitter</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="social-icons">
+    <a href="https://open.spotify.com/artist/4tfnQIRNHLgZmdThaIkByc" target="_blank">Spotify</a>
+    <a href="https://instagram.com/tystringz" target="_blank">Instagram</a>
+    <a href="https://twitter.com/tystringz" target="_blank">X</a>
+  </div>
+  <div class="copy">© 2026 TyStringz</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+// Custom Cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, iframe').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Nav
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+document.querySelectorAll('[data-nav]').forEach(a => {
+  a.addEventListener('click', () => navMenu.classList.remove('open'));
+});
+
+// Loading
+gsap.registerPlugin(ScrollTrigger);
+const loader = document.getElementById('loader');
+const loaderName = loader.querySelector('.name');
+
+gsap.timeline()
+  .to(loaderName, { opacity: 1, duration: 1, ease: 'power2.out' })
+  .to(loaderName, { opacity: 0, duration: 0.8, delay: 1.2, ease: 'power2.in' })
+  .to(loader, { opacity: 0, duration: 0.6, ease: 'power2.inOut', onComplete: () => {
+    loader.style.display = 'none';
+    initAnimations();
+  }});
+
+function initAnimations() {
+  // Hero Ken Burns
+  gsap.to('#heroImg', {
+    scale: 1.08,
+    duration: 20,
+    ease: 'none',
+    repeat: -1,
+    yoyo: true
+  });
+
+  // Scroll indicator fade
+  gsap.to('.scroll-indicator', {
+    opacity: 0,
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: '30% top', scrub: true }
+  });
+
+  // Release section
+  gsap.from('.release .content', {
+    opacity: 0, y: 60,
+    scrollTrigger: { trigger: '.release', start: 'top 70%', end: 'top 30%', scrub: true }
+  });
+
+  // Gallery items
+  gsap.utils.toArray('.g-img').forEach((img, i) => {
+    gsap.from(img, {
+      opacity: 0, y: 40 + (i % 3) * 20,
+      scrollTrigger: { trigger: img, start: 'top 85%', toggleActions: 'play none none reverse' },
+      duration: 0.8, delay: (i % 4) * 0.1, ease: 'power2.out'
+    });
+  });
+
+  // About
+  gsap.from('.about .content', {
+    opacity: 0, y: 50,
+    scrollTrigger: { trigger: '.about', start: 'top 60%', toggleActions: 'play none none reverse' },
+    duration: 1, ease: 'power2.out'
+  });
+
+  // Music
+  gsap.from('.music h2, .music .music-sub, .music iframe', {
+    opacity: 0, y: 30, stagger: 0.15,
+    scrollTrigger: { trigger: '.music', start: 'top 70%', toggleActions: 'play none none reverse' },
+    duration: 0.8, ease: 'power2.out'
+  });
+
+  // Press
+  gsap.from('.press-block', {
+    opacity: 0, y: 30, stagger: 0.1,
+    scrollTrigger: { trigger: '.press', start: 'top 70%', toggleActions: 'play none none reverse' },
+    duration: 0.8, ease: 'power2.out'
+  });
+}
+</script>
 </body>
 </html>
